@@ -95,7 +95,9 @@ export default function Login(params) {
 
       <View style={styles.viewContainer}>
       <Text style={{marginRight: 10}}>Not a Member?</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => {
+          navigation.navigate("SignUp");
+        }}>
       <Text style={styles.textContainer}>Sign Up</Text>
       </TouchableOpacity>
       </View>
