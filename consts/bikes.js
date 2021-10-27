@@ -63,4 +63,6 @@ const bikes = [
         img: require('../img/ggg.jpg'),
         about: 'V40 thinq Q is among the elite class of bikes, it is very slick, and very gently. '
 },
-]
+];
+
+export default bikes

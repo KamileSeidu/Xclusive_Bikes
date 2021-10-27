@@ -1,9 +1,37 @@
 import React from "react";
-import { StyleSheet, View, Text, SafeAreaView, TextInput  } from "react-native";
-import { Ionicons, FontAwesome, AntDesign } from "@expo/vector-icons";
-import COLORS from '../consts/colors'
+import { StyleSheet, View, Text, SafeAreaView, TextInput, TouchableOpacity, Dimensions, FlatList } from "react-native";
+import { Ionicons, FontAwesome, AntDesign, Icon } from "@expo/vector-icons";
+import { MaterialIcons } from '@expo/vector-icons';
+import COLORS from '../consts/colors';
+import bikes from '../consts/bikes';
+const width = Dimensions.get('screen').width/2-30;
 
 export default function Home(params) {
+    const categories = ['BIKES', 'MOTORBIKE', 'BICYCLE'];
+
+    const [catergoryIndex, setCategoryIndex] = React.useState(0);
+
+    const CategoryList = () => {
+        return (
+            <View style={styles.categoryContainer}>
+                {categories.map((item, index)=>(
+                <TouchableOpacity  key={index} onPress={()=>setCategoryIndex(index)}>
+                  <Text 
+                  style={[styles.categoryText, catergoryIndex == index && styles.categoryTextSelected]}>
+                      {item}
+                  </Text>
+                  </TouchableOpacity>
+                  ))}
+            </View>
+        );
+    };
+    const Card = ({item}) => {
+       return <View style = {styles.card}>
+        <View style={{alignItems: 'flex-end'}}>
+        <MaterialIcons name="favorite" size={24} color="black" />
+        </View>
+       </View>;
+    }
   return (
     <SafeAreaView 
     style={{flex: 1, 
@@ -21,7 +49,18 @@ export default function Home(params) {
             <AntDesign name="search1" size={24} color="black" />
             <TextInput placeholder='Search' style={styles.search}/>
          </View>
+        <View style={styles.sortbutton}>
+        <MaterialIcons name="sort" size={24} color="black" />
         </View>
+            </View> 
+        <CategoryList/>
+        <FlatList columnWrapperStyle={{justifyContent: 'space-between'}}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          marginTop: 10,
+          paddingBottom: 50,
+        }} 
+        numColumns={2} data={bikes} renderItem={(item)=> <Card bike={item} />} />
     </SafeAreaView>
  );
 }
@@ -41,7 +80,45 @@ const styles = StyleSheet.create({
      alignItems: 'center',
  },
  search: {
-     
- }
- 
+     fontSize: 18,
+     fontWeight: 'bold',
+     color: COLORS.dark,
+     flex: 1
+ },
+
+ sortbutton: {
+     marginLeft: 10,
+     height: 50,
+     width: 50,
+     backgroundColor: "orange",
+     justifyContent: "center",
+     alignItems: "center",
+     borderRadius: 15,
+ },
+ categoryContainer: {
+    flexDirection: 'row',
+    marginTop: 30,
+    marginBottom: 20,
+    justifyContent: 'space-between',
+  },
+  categoryText: {
+      fontSize: 20,
+      color: 'grey',
+      fontWeight: 'bold'
+  },
+  categoryTextSelected:{
+      color: 'orange',
+      paddingBottom: 5,
+      borderBottomWidth: 2,
+      borderColor: 'orange',
+  },
+  card: {
+      height: 225,
+      backgroundColor: COLORS.light,
+      width,
+      marginHorizontal: 2,
+      borderRadius: 10,
+      marginBottom: 20,
+      padding: 15,
+  },
 })
