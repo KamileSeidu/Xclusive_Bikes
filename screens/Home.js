@@ -1,5 +1,14 @@
 import React from "react";
-import { StyleSheet, View, Text, SafeAreaView, TextInput, TouchableOpacity, Dimensions, FlatList } from "react-native";
+import { 
+    StyleSheet, 
+    View, 
+    Image, 
+    Text, 
+    SafeAreaView, 
+    TextInput, 
+    TouchableOpacity, 
+    Dimensions, 
+    FlatList } from "react-native";
 import { Ionicons, FontAwesome, AntDesign, Icon } from "@expo/vector-icons";
 import { MaterialIcons } from '@expo/vector-icons';
 import COLORS from '../consts/colors';
@@ -25,13 +34,34 @@ export default function Home(params) {
             </View>
         );
     };
-    const Card = ({item}) => {
-       return <View style = {styles.card}>
+    const Card = ({bike}) => {
+       return ( <View style = {styles.card}>
         <View style={{alignItems: 'flex-end'}}>
-        <MaterialIcons name="favorite" size={24} color="black" />
+            <View style=
+                {{width: 30, 
+                 height: 30,
+                 borderRadius: 15,
+                 alignItems: 'center',
+                 justifyContent: 'center',
+                 backgroundColor: bike.like
+                 ? 'rgba(2, 42, 42, 0.2)' 
+                 : 'rgba(0,0,0,0.2)',}}>
+                <MaterialIcons 
+                name="favorite" 
+                size={18} 
+                color={bike.like ? COLORS.red : COLORS.dark} />
+            </View>   
         </View>
-       </View>;
-    }
+        <View style={{height: 100, alighItems: 'center'}}>
+                <Image
+                    style={{flex: 1, resizeMode: 'contain'}} 
+                    source={bike.img}
+                    />
+            </View>
+            <Text style={{fontSize: 16, fontWeight: 'bold', marginTop: 10}}>{bike.name}</Text>
+       </View>
+       );
+    };
   return (
     <SafeAreaView 
     style={{flex: 1, 
@@ -54,16 +84,22 @@ export default function Home(params) {
         </View>
             </View> 
         <CategoryList/>
-        <FlatList columnWrapperStyle={{justifyContent: 'space-between'}}
+        <FlatList 
+        columnWrapperStyle={{justifyContent: 'space-between'}}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           marginTop: 10,
           paddingBottom: 50,
         }} 
-        numColumns={2} data={bikes} renderItem={(item)=> <Card bike={item} />} />
+        numColumns={2} 
+        data={bikes} 
+        renderItem={({item})=> {
+        return <Card bike={item} />;
+        }}
+        />
     </SafeAreaView>
  );
-}
+};
 
 const styles = StyleSheet.create({
  header: {
