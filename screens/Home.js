@@ -16,6 +16,7 @@ import bikes from '../consts/bikes';
 const width = Dimensions.get('screen').width/2-30;
 
 export default function Home(params) {
+    const navigation = params.navigation;
     const categories = ['BIKES', 'MOTORBIKE', 'BICYCLE'];
 
     const [catergoryIndex, setCategoryIndex] = React.useState(0);
@@ -35,7 +36,12 @@ export default function Home(params) {
         );
     };
     const Card = ({bike}) => {
-       return ( <View style = {styles.card}>
+       return (
+            <TouchableOpacity 
+                onPress={() => {
+                navigation.navigate("DetailsScreen");}}
+                >
+            <View style = {styles.card}>
         <View style={{alignItems: 'flex-end'}}>
             <View style=
                 {{width: 30, 
@@ -52,14 +58,38 @@ export default function Home(params) {
                 color={bike.like ? COLORS.red : COLORS.dark} />
             </View>   
         </View>
-        <View style={{height: 100, alighItems: 'center'}}>
+             <View style={{height: 100, alighItems: 'center'}}>
                 <Image
                     style={{flex: 1, resizeMode: 'contain'}} 
                     source={bike.img}
                     />
+             </View>
+                <Text 
+                    style={{fontSize: 16, 
+                    fontWeight: 'bold', 
+                    marginTop: 10}}>{bike.name}
+                </Text>
+            <View style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginTop: 5,
+            }}>
+                <Text style={{fontSize: 19, fontWeight: 'bold'}}>${bike.price}</Text>
+            <TouchableOpacity>
+            <View style={{
+                height: 25,
+                width: 25,
+                backgroundColor: 'orange',
+                borderRadius: 5,
+                justifyContent: 'center',
+                alignItems: 'center',
+                }}>
+                    <Text style={{fontSize: 24, fontWeight: 'bold'}}>+</Text>
+                </View>
+            </TouchableOpacity>
             </View>
-            <Text style={{fontSize: 16, fontWeight: 'bold', marginTop: 10}}>{bike.name}</Text>
        </View>
+       </TouchableOpacity>
        );
     };
   return (
