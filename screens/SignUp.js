@@ -24,7 +24,7 @@ function SignUp(params) {
           width: 120,
           height: 120,
         }}
-        source={require('../img/aaa.jpg')}
+        source={require('../assets/aaa.jpg')}
       />
       <Text style={{ fontSize: 40, color: "grey" }}>Xclusive Bikes</Text>
       

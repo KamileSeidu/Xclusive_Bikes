@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
       borderColor: 'orange',
   },
   card: {
-      height: 225,
+      //height: 225,
       backgroundColor: COLORS.light,
       width,
       marginHorizontal: 2,
