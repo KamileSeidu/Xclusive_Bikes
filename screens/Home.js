@@ -38,32 +38,34 @@ export default function Home(params) {
     const Card = ({bike}) => {
        return (
             <TouchableOpacity 
+                activeOpacity={0.8}
                 onPress={() => {
-                navigation.navigate("DetailsScreen");}}
+                navigation.navigate("DetailsScreen", bike);}}
                 >
             <View style = {styles.card}>
         <View style={{alignItems: 'flex-end'}}>
             <View style=
                 {{width: 30, 
-                 height: 30,
-                 borderRadius: 15,
-                 alignItems: 'center',
-                 justifyContent: 'center',
-                 backgroundColor: bike.like
+                    height: 30,
+                    borderRadius: 15,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: bike.like
                  ? 'rgba(2, 42, 42, 0.2)' 
                  : 'rgba(0,0,0,0.2)',}}>
                 <MaterialIcons 
                 name="favorite" 
                 size={18} 
                 color={bike.like ? COLORS.red : COLORS.dark} />
-            </View>   
-        </View>
-             <View style={{height: 100, alighItems: 'center'}}>
-                <Image
-                    style={{flex: 1, resizeMode: 'contain'}} 
-                    source={bike.img}
-                    />
              </View>
+            </View>   
+            <View style={{height: 100, alighItems: 'center'}}>
+                <Image
+                    source={bike.img}
+                    style={{resizeMode: 'contain', width: 100, 
+                    height: 100, marginLeft: 15, marginTop: 10,}} 
+                />
+        </View>
                 <Text 
                     style={{fontSize: 16, 
                     fontWeight: 'bold', 
@@ -179,7 +181,7 @@ const styles = StyleSheet.create({
       borderColor: 'orange',
   },
   card: {
-      //height: 225,
+      height: 225,
       backgroundColor: COLORS.light,
       width,
       marginHorizontal: 2,
