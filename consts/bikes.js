@@ -11,7 +11,7 @@ const bikes = [
   
     {
       id: 2,
-      name: 'Sweet',
+      name: 'Ducati',
       price: '29.99',
       like: false,
       img: require('../assets/bike2.png'),
