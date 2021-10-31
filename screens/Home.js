@@ -104,7 +104,12 @@ export default function Home(params) {
                 <Text style={{fontSize:25, fontWeight: 'bold'}}>Welcome to</Text>
                 <Text style={{fontSize:32, fontWeight: 'bold', color: COLORS.green}}>Xclusive Bikes</Text>
             </View>
-            <AntDesign name="shoppingcart" size={28} color="black" />
+            <TouchableOpacity onPress={() => {
+                navigation.navigate("Cart");
+              }} 
+              style={styles.header}>
+                <AntDesign name="shoppingcart" size={28} color="black" />
+            </TouchableOpacity>
         </View>
         <View style={{marginTop: 30, flexDirection: 'row'}}>
          <View style={styles.searchContainer}>

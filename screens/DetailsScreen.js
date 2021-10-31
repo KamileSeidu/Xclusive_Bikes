@@ -15,7 +15,11 @@ function DetailsScreen({navigation, route}) {
     const bike = route.params;
     return (
           <SafeAreaView style={{flex: 1, backgroundColor: 'COLORS.white'}}>
-              <TouchableOpacity style={styles.header}>
+              <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Cart");
+              }} 
+              style={styles.header}>
               <AntDesign name="shoppingcart" size={28} color="black" />
               </TouchableOpacity>
               <View style={styles.imageContainer}>
