@@ -8,6 +8,7 @@ import Home from "./screens/Home";
 import SignUp from "./screens/SignUp";
 import DetailsScreen from "./screens/DetailsScreen";
 import Cart from "./screens/Cart";
+import CheckoutNavigator from "./Navigator/CheckoutNavigator";
 
 export default function App() {
   const MainNavigator = createStackNavigator();
@@ -24,6 +25,7 @@ export default function App() {
           <MainNavigator.Screen name="SignUp" component={SignUp} />
           <MainNavigator.Screen name="DetailsScreen" component={DetailsScreen} />
           <MainNavigator.Screen name="Cart" component={Cart} />
+          <MainNavigator.Screen name="Checkout" component={CheckoutNavigator} />
          
         </MainNavigator.Navigator>
       </NavigationContainer>

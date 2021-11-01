@@ -71,7 +71,11 @@ function DetailsScreen({navigation, route}) {
                                 </TouchableOpacity>
                                 
                             </View>
-                            <TouchableOpacity style={styles.buyBtn}>
+                            <TouchableOpacity 
+                            onPress={() => {
+                                navigation.navigate("Checkout");
+                              }} 
+                            style={styles.buyBtn}>
                                 <Text style={{fontSize: 18, fontWeight: 'bold'}}>BUY</Text>
                             </TouchableOpacity>
                         </View>
