@@ -13,6 +13,7 @@ import { Ionicons, FontAwesome, AntDesign, Icon } from "@expo/vector-icons";
 import { MaterialIcons } from '@expo/vector-icons';
 import COLORS from '../consts/colors';
 import bikes from '../consts/bikes';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const width = Dimensions.get('screen').width/2-30;
 
 export default function Home(params) {
@@ -77,17 +78,19 @@ export default function Home(params) {
                 marginTop: 5,
             }}>
                 <Text style={{fontSize: 19, fontWeight: 'bold'}}>${bike.price}</Text>
-            <TouchableOpacity>
-            <View style={{
-                height: 25,
-                width: 25,
-                backgroundColor: 'orange',
-                borderRadius: 5,
-                justifyContent: 'center',
-                alignItems: 'center',
+            <TouchableOpacity 
+            style={{
+                    height: 25,
+                    width: 25,
+                    backgroundColor: 'orange',
+                    borderRadius: 5,
+                    justifyContent: 'center',
+                    alignItems: 'center',
                 }}>
+                {/* //onPress={() => params.onClickAddCart(params)}> */}
+            
                     <Text style={{fontSize: 24, fontWeight: 'bold'}}>+</Text>
-                </View>
+                
             </TouchableOpacity>
             </View>
        </View>
@@ -135,8 +138,39 @@ export default function Home(params) {
         }}
         />
     </SafeAreaView>
- );
+ )
+
+        onClickAddCart(data)
+        {
+            const itemcart = {
+                bike:data,
+                quantity: 1,
+                price:data.price,
+        
+            }
+        
+            AsyncStorage.getItem('cart').then((datacart)=>{
+                if (datacart!==null) {
+                    const cart = JSON.parse(datacart)
+                    cart.push(datacart)
+                    AsyncStorage.setItem('cart',JSON.stringify(cart))
+        
+                }
+                else{
+                    const cart = []
+                    cart.push(itemcart)
+                    AsyncStorage.setItem('cart',JSON.stringify(cart))
+                }
+                alert('Added Successfully')
+        
+            })
+        
+            .catch((error)=>{
+                alert(error)
+            })
+        }
 };
+
 
 const styles = StyleSheet.create({
  header: {
