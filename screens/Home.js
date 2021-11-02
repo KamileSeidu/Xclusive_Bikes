@@ -31,10 +31,10 @@ const showAlert = () =>
             ],
             {
             cancelable: true,
-            onDismiss: () =>
-                Alert.alert(
-                "opps"
-                ),
+            // onDismiss: () =>
+            //     Alert.alert(
+            //     "opps"
+            //     ),
             }
         );
 

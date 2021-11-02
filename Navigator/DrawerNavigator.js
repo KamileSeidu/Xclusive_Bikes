@@ -4,7 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 //Screens
 import Home from '../screens/Home'
-import Login from '../screens/Login'
+import About from '../screens/About'
 import Message from '../screens/Message'
 
 const Drawer = createDrawerNavigator();
@@ -12,9 +12,9 @@ const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
     return (
-        <Drawer.Navigator>
+        <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="Sign Out" component={Login} />
+        <Drawer.Screen name="About" component={About} />
         <Drawer.Screen name="Contact Us" component={Message} />
       </Drawer.Navigator>
     );
