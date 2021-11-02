@@ -17,8 +17,9 @@ function DetailsScreen({navigation, route}) {
           <SafeAreaView style={{flex: 1, backgroundColor: 'COLORS.white'}}>
               <TouchableOpacity
               onPress={() => {
-                navigation.navigate("Cart");
+                navigation.navigate("Cart");   
               }} 
+              
               style={styles.header}>
               <AntDesign name="shoppingcart" size={28} color="black" />
               </TouchableOpacity>
@@ -89,8 +90,7 @@ const styles = StyleSheet.create({
     header: {
         paddingHorizontal: 20,
         marginTop: 20,
-       alignItems: 'flex-end'
-        
+       alignItems: 'flex-end' 
     },
 
     imageContainer: {
