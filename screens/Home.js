@@ -8,7 +8,10 @@ import {
     TextInput, 
     TouchableOpacity, 
     Dimensions, 
-    FlatList } from "react-native";
+    FlatList,
+    Alert,
+    Button
+        } from "react-native";
 import { Ionicons, FontAwesome, AntDesign, Icon } from "@expo/vector-icons";
 import { MaterialIcons } from '@expo/vector-icons';
 import COLORS from '../consts/colors';
@@ -16,11 +19,32 @@ import bikes from '../consts/bikes';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const width = Dimensions.get('screen').width/2-30;
 
+const showAlert = () =>
+        Alert.alert(
+            "Alert",
+            "Added Succesful",
+            [
+            {
+                text: "ok",
+                style: "cancel",
+            },
+            ],
+            {
+            cancelable: true,
+            onDismiss: () =>
+                Alert.alert(
+                "opps"
+                ),
+            }
+        );
+
 export default function Home(params) {
     const navigation = params.navigation;
     const categories = ['BIKES', 'MOTORBIKE', 'BICYCLE'];
 
     const [catergoryIndex, setCategoryIndex] = React.useState(0);
+
+    
 
     const CategoryList = () => {
         return (
@@ -77,8 +101,8 @@ export default function Home(params) {
                 justifyContent: 'space-between',
                 marginTop: 5,
             }}>
-                <Text style={{fontSize: 19, fontWeight: 'bold'}}>${bike.price}</Text>
-            <TouchableOpacity 
+                <Text style={{fontSize: 19, paddingRight: 30, fontWeight: 'bold'}}>${bike.price}</Text>
+            {/* <TouchableOpacity 
             style={{
                     height: 25,
                     width: 25,
@@ -87,11 +111,14 @@ export default function Home(params) {
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}>
-                {/* //onPress={() => params.onClickAddCart(params)}> */}
+                    onPress={() => {showAlert}}
             
-                    <Text style={{fontSize: 24, fontWeight: 'bold'}}>+</Text>
+                <Text style={{fontSize: 24, fontWeight: 'bold'}}>+</Text>
                 
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+            <View style={styles.container}>
+                <Button title="+" color='orange' onPress={showAlert} />
+            </View>
             </View>
        </View>
        </TouchableOpacity>
@@ -104,7 +131,10 @@ export default function Home(params) {
             backgroundColor: COLORS.white,}}>
         <View style={styles.header}>
             <View>
-                <Text style={{fontSize:25, fontWeight: 'bold'}}>Welcome to</Text>
+                <TouchableOpacity>
+                    <Ionicons name="menu" size={25} color="black" />
+                    </TouchableOpacity>
+                {/* <Text style={{fontSize:25, fontWeight: 'bold'}}>Welcome to</Text> */}
                 <Text style={{fontSize:32, fontWeight: 'bold', color: COLORS.green}}>Xclusive Bikes</Text>
             </View>
             <TouchableOpacity onPress={() => {
@@ -140,35 +170,35 @@ export default function Home(params) {
     </SafeAreaView>
  )
 
-        onClickAddCart(data)
-        {
-            const itemcart = {
-                bike:data,
-                quantity: 1,
-                price:data.price,
+        // onClickAddCart(data)
+        // {
+        //     const itemcart = {
+        //         bike:data,
+        //         quantity: 1,
+        //         price:data.price,
         
-            }
+        //     }
         
-            AsyncStorage.getItem('cart').then((datacart)=>{
-                if (datacart!==null) {
-                    const cart = JSON.parse(datacart)
-                    cart.push(datacart)
-                    AsyncStorage.setItem('cart',JSON.stringify(cart))
+        //     AsyncStorage.getItem('cart').then((datacart)=>{
+        //         if (datacart!==null) {
+        //             const cart = JSON.parse(datacart)
+        //             cart.push(datacart)
+        //             AsyncStorage.setItem('cart',JSON.stringify(cart))
         
-                }
-                else{
-                    const cart = []
-                    cart.push(itemcart)
-                    AsyncStorage.setItem('cart',JSON.stringify(cart))
-                }
-                alert('Added Successfully')
+        //         }
+        //         else{
+        //             const cart = []
+        //             cart.push(itemcart)
+        //             AsyncStorage.setItem('cart',JSON.stringify(cart))
+        //         }
+        //         alert('Added Successfully')
         
-            })
+        //     })
         
-            .catch((error)=>{
-                alert(error)
-            })
-        }
+        //     .catch((error)=>{
+        //         alert(error)
+        //     })
+        // }
 };
 
 
@@ -228,4 +258,11 @@ const styles = StyleSheet.create({
       marginBottom: 20,
       padding: 15,
   },
+  container: {
+    height: 35,
+    width: 50,
+    justifyContent: "center",
+    alignItems: "center"
+  }
+
 })
