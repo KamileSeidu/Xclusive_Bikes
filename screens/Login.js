@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import COLORS from '../consts/colors'
 import { MaterialIcons } from '@expo/vector-icons';
@@ -7,9 +7,12 @@ import { MaterialIcons } from '@expo/vector-icons';
 export default function Login(params) {
   const navigation = params.navigation;
   return (
+    <ImageBackground
+    blurRadius={10} 
+    style={styles.background}
+    source={require('../assets/background.jpg')}>
     <View
       style={{
-        backgroundColor: "white",
         flex: 1,
         paddingHorizontal: 20,
         justifyContent: "center",
@@ -23,6 +26,7 @@ export default function Login(params) {
           marginBottom: 30,
           width: 120,
           height: 120,
+          position:'relative',
         }}
         source={require('../assets/aaa.jpg')}
       />
@@ -102,6 +106,7 @@ export default function Login(params) {
       </TouchableOpacity>
       </View>
     </View>
+    </ImageBackground>
   );
 }
 
@@ -123,5 +128,11 @@ const styles = StyleSheet.create({
     marginLeft: 13,
     marginRight: 13,
     marginTop: 10,
+  },
+
+  background: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
   }
 })
