@@ -15,7 +15,7 @@ function MyDrawer() {
         <Drawer.Navigator>
         <Drawer.Screen name="Home" component={Home} />
         <Drawer.Screen name="Sign Out" component={Login} />
-        <Drawer.Screen name="Message" component={Message} />
+        <Drawer.Screen name="Contact Us" component={Message} />
       </Drawer.Navigator>
     );
   }

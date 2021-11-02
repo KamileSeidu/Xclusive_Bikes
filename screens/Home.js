@@ -130,26 +130,34 @@ export default function Home(params) {
             paddingHorizontal:20,
             backgroundColor: COLORS.white,}}>
         <View style={styles.header}>
-            <View>
+            
+                <Text style={{fontSize:32, fontWeight: 'bold', color: COLORS.green}}>Xclusive Bikes</Text>
                 <TouchableOpacity
                 onPress={() => {
                     navigation.navigate("Menu");
                   }} 
                 >
-                    <Ionicons name="menu" size={25} color="black" />
+                    <View style={styles.menuContainer}>
+                        <Text style={{fontSize: 25, color: 'white', fontWeight: 'bold', marginLeft: 5}}>Menu</Text>
+                    </View>
                     </TouchableOpacity>
-                
-                {/* <Text style={{fontSize:25, fontWeight: 'bold'}}>Welcome to</Text> */}
-                <Text style={{fontSize:32, fontWeight: 'bold', color: COLORS.green}}>Xclusive Bikes</Text>
-            </View>
+            
+        </View>
             <TouchableOpacity onPress={() => {
                 navigation.navigate("Cart");
               }} 
-              style={styles.header}>
-                <AntDesign name="shoppingcart" size={28} color="black" />
+              style={{ 
+                alignSelf: "center",
+                marginTop: 5,
+                height: 30,
+                width: 50,
+                backgroundColor:'grey',
+                borderWidth: 0.5,
+                borderRadius: 15,}}
+              >
+                <AntDesign name="shoppingcart" size={28} color="black" style={{paddingLeft: 8}} />
             </TouchableOpacity>
-        </View>
-        <View style={{marginTop: 30, flexDirection: 'row'}}>
+        <View style={{marginTop: 15, flexDirection: 'row'}}>
          <View style={styles.searchContainer}>
             <AntDesign name="search1" size={24} color="black" />
             <TextInput placeholder='Search' style={styles.search}/>
@@ -269,6 +277,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
+
+  menuContainer: {
+    height: 40,
+    width: 70,
+    borderWidth: 0.5,
+    borderRadius: 10,
+    alignSelf: 'stretch',
+    backgroundColor: 'green',
+  }
   
 
 })
