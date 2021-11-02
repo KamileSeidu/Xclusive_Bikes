@@ -9,6 +9,7 @@ import SignUp from "./screens/SignUp";
 import DetailsScreen from "./screens/DetailsScreen";
 import Cart from "./screens/Cart";
 import CheckoutNavigator from "./Navigator/CheckoutNavigator";
+import DrawerNavigator from "./Navigator/DrawerNavigator"
 
 export default function App() {
   const MainNavigator = createStackNavigator();
@@ -26,6 +27,7 @@ export default function App() {
           <MainNavigator.Screen name="DetailsScreen" component={DetailsScreen} />
           <MainNavigator.Screen name="Cart" component={Cart} />
           <MainNavigator.Screen name="Checkout" component={CheckoutNavigator} />
+          <MainNavigator.Screen name="Menu" component={DrawerNavigator}/>
          
         </MainNavigator.Navigator>
       </NavigationContainer>

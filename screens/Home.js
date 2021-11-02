@@ -131,9 +131,14 @@ export default function Home(params) {
             backgroundColor: COLORS.white,}}>
         <View style={styles.header}>
             <View>
-                <TouchableOpacity>
+                <TouchableOpacity
+                onPress={() => {
+                    navigation.navigate("Menu");
+                  }} 
+                >
                     <Ionicons name="menu" size={25} color="black" />
                     </TouchableOpacity>
+                
                 {/* <Text style={{fontSize:25, fontWeight: 'bold'}}>Welcome to</Text> */}
                 <Text style={{fontSize:32, fontWeight: 'bold', color: COLORS.green}}>Xclusive Bikes</Text>
             </View>
@@ -263,6 +268,7 @@ const styles = StyleSheet.create({
     width: 50,
     justifyContent: "center",
     alignItems: "center"
-  }
+  },
+  
 
 })

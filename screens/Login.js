@@ -112,7 +112,7 @@ export default function Login(params) {
 
 const styles = StyleSheet.create({
   textContainer: {
-    color: "orange",
+    color: "white",
     fontWeight: "400",
   },
   viewContainer: {
