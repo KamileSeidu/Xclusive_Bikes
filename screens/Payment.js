@@ -51,12 +51,14 @@ function Payment(params) {
      
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("Confirm");
+          navigation.navigate("Payment");
         }}
         style={{
           padding: 15,
           justifyContent: 'center',
-          marginTop: 10,
+          width: 250,
+          marginTop: 40,
+          marginLeft: 55,
           alignItems: "center",
           borderRadius: 10,
           backgroundColor: "orange",
