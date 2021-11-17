@@ -1,36 +1,53 @@
 import React from 'react';
-import {View, Text, Image, TextInput, TouchableOpacity, StyleSheet, ImageBackground} from 'react-native';
-import { AntDesign } from "@expo/vector-icons";
-import COLORS from '../consts/colors'
-import { MaterialIcons } from '@expo/vector-icons';
+import {View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground} from 'react-native';
+
 
 
 function Payment(params) {
     const navigation = params.navigation;
     return (
         <View>
-            <Text style={{ fontSize: 40, color: "grey" }}>Xclusive Bikes</Text>
-      
-      <View style={styles.inputContainer}>
-         <AntDesign name="user" size={24} color="black" style={{paddingLeft: 10}} />
-         <TextInput placeholder="User Name" style={{paddingLeft: 10}}/>
+          <View style={{
+          paddingBottom: 10,
+          paddingTop: 10,
+          paddingHorizontal: 20,
+          // alignItems: "center",
+          borderRadius: 10,
+          flexDirection: "row",
+          backgroundColor: "lightgrey",}}>
+
+            <Text>Address and Billing </Text>
+            <Text style={{paddingLeft: 145}}>*Required</Text>
+          </View>
+      <View style={styles.inputContainer}> 
+         <TextInput placeholder="First Name                                                    
+         *" style={{paddingLeft: 10}}/>
          </View>
       <View style={styles.inputContainer}>
-         <AntDesign name="mail" size={24} color="black" style={{paddingLeft: 10}} />
-         <TextInput placeholder="Email" style={{paddingLeft: 10}}/>
+         <TextInput placeholder="Last name                                                     
+         *" style={{paddingLeft: 10}}/>
          </View>
       <View style={styles.inputContainer}>
-         <AntDesign name="phone" size={24} color="black" style={{paddingLeft: 10}}/>
-         <TextInput placeholder="Phone Number" 
+         <TextInput placeholder="Additional Info                                             
+         " style={{paddingLeft: 10}}/>
+         </View>
+      <View style={styles.inputContainer}>
+         <TextInput placeholder="Region                                                          
+         *" style={{paddingLeft: 10}}/>
+         </View>
+      <View style={styles.inputContainer}>
+         <TextInput placeholder="City                                                             
+         *" style={{paddingLeft: 10}}/>
+         </View>
+      <View style={styles.inputContainer}>
+         <TextInput placeholder="Phone Number                                                
+         *" 
          style={{paddingLeft: 10}}
          keyboardType='numeric'
-         maxLength={10}
+         maxLength={13}
          />
          </View>
-      <View style={styles.inputContainer}>
-         <MaterialIcons name="security" size={24} color="black" style={{paddingLeft: 10}}/>
-         <TextInput placeholder="Password" secureTextEntry={true} style={{paddingLeft: 10}}/>
-         </View>
+      
      
       <TouchableOpacity
         onPress={() => {
@@ -38,15 +55,15 @@ function Payment(params) {
         }}
         style={{
           padding: 15,
-          paddingHorizontal: 120,
+          justifyContent: 'center',
           marginTop: 10,
           alignItems: "center",
           borderRadius: 10,
-          flexDirection: "row",
-          backgroundColor: "blue",
+          backgroundColor: "orange",
+
         }}
       >
-        <Text style={{ paddingLeft: 10, color: "white" }}>Sign Up</Text>
+        <Text style={{ paddingLeft: 10, color: "white",}}>Proceed to Payment</Text>
       </TouchableOpacity>
         </View>
     );
@@ -59,14 +76,15 @@ function Payment(params) {
       
         inputContainer: {
           height: 50,
-          borderWidth: 0.5,
-          borderRadius: 10,
           alignSelf: 'stretch',
           flexDirection: 'row',
           alignItems: 'center',
           marginLeft: 13,
           marginRight: 13,
           marginTop: 10,
+          paddingLeft: 1,
+          borderBottomWidth: 1,
+          borderEndColor: 'lightgrey',
         },
 })
 
