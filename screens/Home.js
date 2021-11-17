@@ -143,28 +143,30 @@ export default function Home(params) {
                     </TouchableOpacity>
             
         </View>
-            <TouchableOpacity onPress={() => {
-                navigation.navigate("Cart");
-              }} 
-              style={{ 
-                alignSelf: "center",
-                marginTop: 5,
-                height: 30,
-                width: 50,
-                backgroundColor:'grey',
-                borderWidth: 0.5,
-                borderRadius: 15,}}
-              >
-                <AntDesign name="shoppingcart" size={28} color="black" style={{paddingLeft: 8}} />
-            </TouchableOpacity>
+            
         <View style={{marginTop: 15, flexDirection: 'row'}}>
          <View style={styles.searchContainer}>
             <AntDesign name="search1" size={24} color="black" />
             <TextInput placeholder='Search' style={styles.search}/>
          </View>
-        <View style={styles.sortbutton}>
-        <MaterialIcons name="sort" size={24} color="black" />
-        </View>
+        
+        <TouchableOpacity onPress={() => {
+            navigation.navigate("Cart");
+              }} 
+              style={styles.cartbutton}
+            //   style={{ 
+            //     alignSelf: "center",
+            //     marginTop: 5,
+            //     height: 30,
+            //     width: 50,
+            //     backgroundColor:'grey',
+            //     borderWidth: 0.5,
+            //     borderRadius: 15,}}
+              >
+                <AntDesign name="shoppingcart" size={28} color="black" />
+            </TouchableOpacity>
+        {/* <MaterialIcons name="sort" size={24} color="black" /> */}
+        
             </View> 
         <CategoryList/>
         <FlatList 
@@ -236,7 +238,7 @@ const styles = StyleSheet.create({
      flex: 1
  },
 
- sortbutton: {
+ cartbutton: {
      marginLeft: 10,
      height: 50,
      width: 50,
